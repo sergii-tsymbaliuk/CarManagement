@@ -22,12 +22,11 @@ public class EntryPoint {
 		EntityTransaction trans = EM.getTransaction();
 		Query q;
 		Random r = new Random();
-		//generateCars();
+		generateCars();
 		
 		//Updating Car
-		
 		q = EM.createQuery("select c from Car c");
-//		System.out.println(q.getResultList());
+
 		trans = EM.getTransaction();		
 		trans.begin();
 		try {
@@ -54,10 +53,8 @@ public class EntryPoint {
 		//Printing to console objects after update
 		q = EM.createQuery("select c from Car c");
 		for (Object o : q.getResultList()){
-			//updateCarColor(o);
 			System.out.println(o.toString());
 		}
-		
 
 		EM.close();
 		EMS.close();
@@ -82,26 +79,32 @@ public class EntryPoint {
 		Random r = new Random();
 		
 		car = new Car("Cadillac "+r.nextInt(100),150);
-		car.setEngine(new Engine("DOHC",1498));
-		car.getEngine().setPower((long) 150);
+		car.setEngine(new Engine121("DOHC",150,3498,8));
+		//car.setEngine(new Engine("DOHC",1498));
+		//car.getEngine().setPower((long) 150);
 		car.setCarType(CarType.Car);
 		
 		bus = new Bus("LAZ "+r.nextInt(10),100,50);
-		bus.setEngine(new Engine("MEMZ",2498));
-		bus.getEngine().setPower((long) 100);
+		bus.setEngine(new Engine121("MEMZ",80,4498,4));
+		//bus.setEngine(new Engine("MEMZ",2498));
+		//bus.getEngine().setPower((long) 100);
 		bus.setCarType(CarType.Bus);
 	
 		truck = new Truck("ZIL "+r.nextInt(10),176,15000);
-		truck.setEngine(new Engine("OMZ",2498));
-		truck.getEngine().setPower((long) 176);
+		truck.setEngine(new Engine121("SOHC",200,4998,16));
+		//truck.setEngine(new Engine("OMZ",2498));
+		//truck.getEngine().setPower((long) 176);
 		truck.setCarType(CarType.Truck);
 		
 		trans = EM.getTransaction();
 		
 		trans.begin();
 		try {
+			EM.persist(car.getEngine());			
 			EM.persist(car);
+			EM.persist(bus.getEngine());			
 			EM.persist(bus);
+			EM.persist(truck.getEngine());
 			EM.persist(truck);
 			trans.commit();
 		} catch (Exception e) {

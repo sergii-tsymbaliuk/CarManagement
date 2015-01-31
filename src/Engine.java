@@ -3,11 +3,13 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Engine {
+		
 	@Column(name="Engine_Model")
 	protected String model;
 	@Column(name="Engine_Volume")	
 	protected Integer volume;
 	@Column(name="Engine_Power")
+
 	protected Long Power;
 	
 	public Long getPower() {

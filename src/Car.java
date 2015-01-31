@@ -28,6 +28,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Version;
+
+import org.eclipse.persistence.jpa.config.Cascade;
 import org.hibernate.annotations.Columns;
 
 @Entity
@@ -41,9 +43,15 @@ public class Car {
 	@Version
 	protected long version;
 	protected String model; 
-	protected Integer power;
-	@Embedded 
-	protected Engine engine;
+//	protected Integer power;
+	
+//	@Embedded 
+//	protected Engine engine;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="ENGINE_ID")
+	Engine121 engine;
+	
 	@Basic(fetch=FetchType.LAZY,optional=true)
 	@Enumerated(EnumType.STRING)
 	protected CarType carType;
@@ -57,10 +65,6 @@ public class Car {
 	protected String Description;
 
 	@ElementCollection()
-//    @OneToMany(
-////    		mappedBy="Address",
-//    		cascade=CascadeType.ALL 
-//    		)
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
 	public CarType getCarType() {
@@ -82,17 +86,17 @@ public class Car {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public Integer getPower() {
-		return power;
-	}
-	public void setPower(Integer power) {
-		this.power = power;
-	}
-	
-	public Engine getEngine() {
+//	public Integer getPower() {
+//		return power;
+//	}
+//	public void setPower(Integer power) {
+//		this.power = power;
+//	}
+//	
+	public Engine121 getEngine() {
 		return engine;
 	}
-	public void setEngine(Engine engine) {
+	public void setEngine(Engine121 engine) {
 		this.engine = engine;
 	}
 	
@@ -132,7 +136,7 @@ public class Car {
 		super();
 		this.timestamp = new Date();		
 		this.model = model;
-		this.power = power;
+//		this.power = power;
 	}
 	
 	public Collection<TechRecord> getTechRecords() {
@@ -150,7 +154,8 @@ public class Car {
 	@Override
 	public String toString() {
 		String s = "Car id=" + id + "\n version=" + version + "\n model=" + model
-				+ "\n power=" + power + "\n engine=" + engine  
+//				+ "\n power=" + power  
+				+ "\n engine=" + engine  
 				+ "\n carType=" + carType + "\n color=" + color
 				+ "\n timestamp=" + timestamp + "\n Description=" + Description;
 		s += "\n techRecords:\n";
