@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -27,7 +28,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Version;
-
 import org.hibernate.annotations.Columns;
 
 @Entity
@@ -56,8 +56,11 @@ public class Car {
 	@Lob
 	protected String Description;
 
-	
 	@ElementCollection()
+//    @OneToMany(
+////    		mappedBy="Address",
+//    		cascade=CascadeType.ALL 
+//    		)
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
 	public CarType getCarType() {
@@ -132,10 +135,27 @@ public class Car {
 		this.power = power;
 	}
 	
+	public Collection<TechRecord> getTechRecords() {
+		return techRecords;
+	}
+	
+	public void setTechRecords(Collection<TechRecord> techRecords) {
+		this.techRecords = techRecords;
+	}
+	
+	public void addTechRecords(TechRecord techRecord) {
+		this.techRecords.add(techRecord);
+	}
+	
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", version=" + version + ", model=" + model
-				+ ", power=" + power + ", engine=" + engine + ", carType="
-				+ carType + ", color=" + color + "]";
+		String s = "Car id=" + id + "\n version=" + version + "\n model=" + model
+				+ "\n power=" + power + "\n engine=" + engine  
+				+ "\n carType=" + carType + "\n color=" + color
+				+ "\n timestamp=" + timestamp + "\n Description=" + Description;
+		s += "\n techRecords:\n";
+		for(TechRecord tr : techRecords)
+			s+= "\t"+tr +"\n";
+		return s;
 	}
 }

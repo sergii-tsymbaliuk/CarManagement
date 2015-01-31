@@ -4,21 +4,26 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class TechRecord {
-	protected String text;
 	protected Date date;
 	protected String author;
-
+	protected String text;
+	
 	public TechRecord() {
 		super();
 	}
 
 	public TechRecord(String text, Date date, String author) {
 		super();
-		this.text = text;
 		this.date = date;
 		this.author = author;
+		this.text = text;
 	}
 
+	public TechRecord(String text, String author) {
+		this(text, new Date(), author);
+	}
+
+	
 	public String getText() {
 		return text;
 	}
@@ -45,8 +50,8 @@ public class TechRecord {
 
 	@Override
 	public String toString() {
-		return "TechRecord [text=" + text + ", date=" + date + ", author="
-				+ author + "]";
+		return "TechRecord [" + date + " : " + author + " \""
+				+ text + "\"]";
 	}
 	
 		
