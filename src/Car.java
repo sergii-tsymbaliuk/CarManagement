@@ -42,9 +42,12 @@ public class Car {
 	protected Long id; 
 	@Version
 	protected long version;
-	protected String model; 
-//	protected Integer power;
 	
+//	protected String model;
+	@ManyToOne
+	protected CarModel carModel;
+	
+//	protected Integer power;
 //	@Embedded 
 //	protected Engine engine;
 	
@@ -80,11 +83,11 @@ public class Car {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getModel() {
-		return model;
+	public CarModel getModel() {
+		return carModel;
 	}
-	public void setModel(String model) {
-		this.model = model;
+	public void setModel(CarModel carModel) {
+		this.carModel = carModel;
 	}
 //	public Integer getPower() {
 //		return power;
@@ -132,11 +135,11 @@ public class Car {
 		this.timestamp = new Date();
 	}
 	
-	public Car(String model, Integer power) {
+	public Car(CarModel model, Engine121 engine) {
 		super();
 		this.timestamp = new Date();		
-		this.model = model;
-//		this.power = power;
+		this.carModel = model;
+		this.engine = engine;
 	}
 	
 	public Collection<TechRecord> getTechRecords() {
@@ -153,7 +156,8 @@ public class Car {
 	
 	@Override
 	public String toString() {
-		String s = "Car id=" + id + "\n version=" + version + "\n model=" + model
+		String s = "Car id=" + id + "\n version=" + version 
+				+ "\n model=" + carModel
 //				+ "\n power=" + power  
 				+ "\n engine=" + engine  
 				+ "\n carType=" + carType + "\n color=" + color

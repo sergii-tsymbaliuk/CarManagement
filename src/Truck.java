@@ -12,12 +12,19 @@ public class Truck extends Car {
 		this.capacity = capacity;
 	}
 
-	public Truck(String model, Integer power,Integer capacity) {
-		super(model, power);
+	public Truck(CarModel model, Engine121 engine,Integer capacity) {
+		super(model, engine);
 		this.capacity = capacity;
 	}
 
 	public Truck() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Truck [capacity=" + capacity + super.toString()+"]";
+	}
+	
+	
 }

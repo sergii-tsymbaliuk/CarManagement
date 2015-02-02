@@ -12,14 +12,23 @@ public class Bus extends Car {
 		this.sits = sits;
 	}
 
-	public Bus(String model, Integer power,Integer sits) {
-		super( model,  power);
-		this.sits = sits;
-	}
+//	public Bus(String model, Integer power,Integer sits) {
+//		super( model,  power);
+//		this.sits = sits;
+//	}
 
+	public Bus(CarModel model, Engine121 engine, Integer sits) {
+		super( model,  engine);
+		this.sits = sits;
+	}	
+	
 	public Bus() {
 		super();
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Bus [sits=" + sits + super.toString()+"]";
+	}
 	
 }
