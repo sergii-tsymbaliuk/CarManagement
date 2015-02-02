@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.persistence.Basic;
@@ -69,6 +72,11 @@ public class Car {
 
 	@ElementCollection()
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
+	
+	@ManyToMany
+	protected Collection <CarDetail> carDertails = new ArrayList<CarDetail>();
+	
+	
 	
 	public CarType getCarType() {
 		return carType;
@@ -153,6 +161,27 @@ public class Car {
 	public void addTechRecords(TechRecord techRecord) {
 		this.techRecords.add(techRecord);
 	}
+
+	public CarModel getCarModel() {
+		return carModel;
+	}
+	
+	public void setCarModel(CarModel carModel) {
+		this.carModel = carModel;
+	}
+	
+	public Collection<CarDetail> getCarDertails() {
+		return carDertails;
+	}
+	
+	public void setCarDertails(Collection<CarDetail> carDertails) {
+		this.carDertails = carDertails;
+	}	
+	
+	public void addCarDertail(CarDetail carDertail) {
+		this.carDertails.add(carDertail);
+	}	
+	
 	
 	@Override
 	public String toString() {

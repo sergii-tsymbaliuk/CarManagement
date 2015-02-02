@@ -24,7 +24,7 @@ public class EntryPoint {
 		Random r = new Random();
 		
 		//Generating cars and models
-		generateCars();
+		//generateCars();
 		
 		//Updating Car
 		q = EM.createQuery("select c from Car c");
@@ -33,15 +33,22 @@ public class EntryPoint {
 		trans.begin();
 		try {
 			for (Object o : q.getResultList()){
-				updateCarColor(o);			 
+				//updateCarColor(o);			 
 				
-				//Add Tech Records
 				Car c = (Car) o;				
-				for (int i=0; i< r.nextInt(5);i++){
-					TechRecord tr = new TechRecord("Comment text "+i+" for car "+c.getModel()+" "+c.getId(), "Ivan Petrov");
-					c.addTechRecords(tr);
-				}
+//				//Add Tech Records	
+//				for (int i=0; i< r.nextInt(5);i++){
+//					TechRecord tr = new TechRecord("Comment text "+i+" for car "+c.getModel()+" "+c.getId(), "Ivan Petrov");
+//					c.addTechRecords(tr);
+//				}
 				 
+				//AddDetales
+				for (int i=0; i< r.nextInt(5);i++){
+					CarDetail cd = new CarDetail("Processor","Bosh");
+					c.addCarDertail(cd);
+					EM.persist(cd);
+				}
+					
 				System.out.println(o.toString());
 				
 				EM.merge(o);			 

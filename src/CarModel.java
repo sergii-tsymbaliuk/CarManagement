@@ -58,7 +58,8 @@ public class CarModel {
 	@Override
 	public String toString() {
 		return "CarModel [name=" + name + ", originDate=" + originDate
-				+ ", cars=" + cars + "]";
+//				+ ", cars=" + cars 
+				+ "]";
 	}
 	
 }
