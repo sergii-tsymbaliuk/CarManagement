@@ -27,40 +27,51 @@ public class EntryPoint {
 		//generateCars();
 		
 		//Updating Car
-		q = EM.createQuery("select c from Car c");
-
-		trans = EM.getTransaction();		
-		trans.begin();
-		try {
-			for (Object o : q.getResultList()){
-				//updateCarColor(o);			 
-				
-				Car c = (Car) o;				
-//				//Add Tech Records	
-//				for (int i=0; i< r.nextInt(5);i++){
-//					TechRecord tr = new TechRecord("Comment text "+i+" for car "+c.getModel()+" "+c.getId(), "Ivan Petrov");
-//					c.addTechRecords(tr);
-//				}
-				 
-				//AddDetales
-				for (int i=0; i< r.nextInt(5);i++){
-					CarDetail cd = new CarDetail("Processor","Bosh");
-					c.addCarDertail(cd);
-					EM.persist(cd);
-				}
-					
-				System.out.println(o.toString());
-				
-				EM.merge(o);			 
-			}
-			trans.commit();
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			trans.rollback();
-		}
+//		q = EM.createQuery("select c from Car c");
+//
+//		trans = EM.getTransaction();		
+//		trans.begin();
+//		try {
+//			for (Object o : q.getResultList()){
+//				//updateCarColor(o);			 
+//				
+//				Car c = (Car) o;				
+////				//Add Tech Records	
+////				for (int i=0; i< r.nextInt(5);i++){
+////					TechRecord tr = new TechRecord("Comment text "+i+" for car "+c.getModel()+" "+c.getId(), "Ivan Petrov");
+////					c.addTechRecords(tr);
+////				}
+//				 
+//				//AddDetales
+////				for (int i=0; i< r.nextInt(5);i++){
+////					CarDetail cd = new CarDetail("Processor","Bosh");
+////					c.addCarDertail(cd);
+////					EM.persist(cd);
+////				}
+//					
+//				System.out.println(o.toString());
+//				
+//				EM.merge(o);			 
+//			}
+//			trans.commit();
+//		} catch (Exception e) {
+//			System.out.println(e.toString());
+//			trans.rollback();
+//		}
 
 		//Adding some cars for existent models
-		generateSomeMoreCars();
+//		generateSomeMoreCars();
+		
+		
+		//Try getting cars with OldDao
+		CarOldDao carOldDao =  new CarOldDao();
+		
+		System.out.println("Cars with model LAZ:");
+		for (Car c : carOldDao.findByModelName("LAZ"))
+			System.out.println(c);
+		
+		System.out.println("Cars with power between 50 and 180:");		
+		for (Car c : carOldDao.findByPowerBetween(50, 180));		
 		
 		//Printing to console objects after update
 		q = EM.createQuery("select c from Car c");
