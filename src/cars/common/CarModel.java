@@ -1,7 +1,9 @@
+package cars.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class CarModel {
 	@Column(name="MODEL_NAME")
 	protected String name;
 	protected Date originDate;
-	@OneToMany(mappedBy="carModel")
+	@OneToMany(mappedBy="carModel", cascade=CascadeType.ALL)
 	protected Collection<Car> cars = new ArrayList<Car>();
 		
 	public CarModel() {

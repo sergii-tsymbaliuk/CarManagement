@@ -1,3 +1,4 @@
+package cars.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -34,7 +35,9 @@ import javax.persistence.Version;
 
 import org.eclipse.persistence.jpa.config.Cascade;
 import org.hibernate.annotations.Columns;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 @SecondaryTable(name="car_colors")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -47,7 +50,7 @@ public class Car {
 	protected long version;
 	
 //	protected String model;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	protected CarModel carModel;
 	
 //	protected Integer power;
@@ -73,7 +76,7 @@ public class Car {
 	@ElementCollection()
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	protected Collection <CarDetail> carDertails = new ArrayList<CarDetail>();
 	
 	

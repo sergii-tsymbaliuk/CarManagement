@@ -1,3 +1,12 @@
-C:\Users\Sergii\GD\JWS\CarManagement\src\EntryPoint.java
-C:\Users\Sergii\GD\JWS\CarManagement\src\Car.java
-C:\Users\Sergii\GD\JWS\CarManagement\src\Engine.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\CarColor.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\TechRecord.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\Car.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\Engine121.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\CarModel.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\Truck.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\EntryPoint.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\Bus.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\dao\CarDao.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\CarType.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\Engine.java
+C:\Users\Sergii\GD\JWS\CarManagement\src\cars\common\CarDetail.java
