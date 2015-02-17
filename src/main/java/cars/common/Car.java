@@ -2,21 +2,15 @@ package cars.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.MapKey;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,16 +19,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
-import javax.persistence.SecondaryTables;
 import javax.persistence.Version;
 
-import org.eclipse.persistence.jpa.config.Cascade;
-import org.hibernate.annotations.Columns;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -45,17 +34,12 @@ public class Car {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	@Column(name="Car_id")
-	protected Long id; 
+	protected Integer id; 
 	@Version
 	protected long version;
 	
-//	protected String model;
 	@ManyToOne(cascade=CascadeType.ALL)
 	protected CarModel carModel;
-	
-//	protected Integer power;
-//	@Embedded 
-//	protected Engine engine;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ENGINE_ID")
@@ -79,8 +63,6 @@ public class Car {
 	@ManyToMany(cascade=CascadeType.ALL)
 	protected Collection <CarDetail> carDertails = new ArrayList<CarDetail>();
 	
-	
-	
 	public CarType getCarType() {
 		return carType;
 	}
@@ -88,10 +70,10 @@ public class Car {
 		this.carType = carType;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public CarModel getModel() {
@@ -100,13 +82,7 @@ public class Car {
 	public void setModel(CarModel carModel) {
 		this.carModel = carModel;
 	}
-//	public Integer getPower() {
-//		return power;
-//	}
-//	public void setPower(Integer power) {
-//		this.power = power;
-//	}
-//	
+	
 	public Engine121 getEngine() {
 		return engine;
 	}

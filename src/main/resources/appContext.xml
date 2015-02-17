@@ -13,17 +13,15 @@
 	<context:component-scan base-package="cars">
 		<context:exclude-filter type="regex" expression="cars.*Test*.*" />
 	</context:component-scan>
-
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-
-	</bean>
+	<jpa:repositories base-package="cars"></jpa:repositories>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="HibernateMySQL"></property>	
 	</bean>
 
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager"/>
 </beans>
