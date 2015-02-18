@@ -165,11 +165,12 @@ public class Car {
 	@Override
 	public String toString() {
 		String s = "Car id=" + id + "\n version=" + version 
+				+ "\n timestamp=" + timestamp				
 				+ "\n model=" + carModel
 //				+ "\n power=" + power  
 				+ "\n engine=" + engine  
 				+ "\n carType=" + carType + "\n color=" + color
-				+ "\n timestamp=" + timestamp + "\n Description=" + Description;
+				+ "\n Description=" + Description;
 		s += "\n techRecords:\n";
 		for(TechRecord tr : techRecords)
 			s+= "\t"+tr +"\n";

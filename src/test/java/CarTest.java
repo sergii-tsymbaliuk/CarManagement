@@ -3,6 +3,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.querydsl.QSort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -31,7 +35,10 @@ AbstractTransactionalJUnit4SpringContextTests {
 		
 		System.out.println(carDao.findByModelName("Rover"));
 		System.out.println(carDao.findByPowerBetween(127, 300));
-	
+		
+		System.out.println(carDao.findByEngineDisplacementIsLessThanAndEngineDisplacementIsLessThan(
+				10, 3000, 
+				new PageRequest(0,5,new Sort(Direction.ASC,"timestamp"))));
 	}
 
 }
