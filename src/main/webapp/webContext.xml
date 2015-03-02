@@ -10,9 +10,12 @@
 
 	<mvc:annotation-driven/>
 
-	<context:component-scan base-package="spring" />
+	<context:component-scan base-package="cars" />
 	
 	<bean
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/jsp/" p:suffix=".jsp" />
+	
+	
+	
 </beans>

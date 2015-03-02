@@ -11,7 +11,7 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="cars">
-		<context:exclude-filter type="regex" expression="cars.*Test*.*" />
+<!-- 		<context:exclude-filter type="regex" expression="cars.*Test*.*" /> -->
 	</context:component-scan>
 	<jpa:repositories base-package="cars"></jpa:repositories>
 

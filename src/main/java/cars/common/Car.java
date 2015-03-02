@@ -57,7 +57,7 @@ public class Car {
 	@Lob
 	protected String Description;
 
-	@ElementCollection()
+	@ElementCollection(fetch=FetchType.EAGER)
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
 	@ManyToMany(cascade=CascadeType.ALL)
