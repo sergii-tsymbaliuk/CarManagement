@@ -16,6 +16,8 @@ import cars.common.Car;
 import cars.common.CarModel;
 import cars.common.Engine121;
 import cars.dao.CarDao;
+import cars.dao.CarEngineDao;
+import cars.dao.CarModelDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/appContext.xml")
@@ -25,17 +27,24 @@ public class CarTest extends
 AbstractTransactionalJUnit4SpringContextTests {
 	
 	@Autowired CarDao carDao;
+	@Autowired CarModelDao carModelDao;
+	@Autowired CarEngineDao carEngineDao;
 	
 	@Test public void write() {
 	
 //		carDao.save(new Car(
-//				new CarModel("Rover") ,
-//				new Engine121("zzz", 128, 2489, 6)
+//				carModelDao.findByName("Rover").get(0) ,
+//				new Engine121("xxx", 145, 2988, 4)
 //				));
 		
-		System.out.println(carDao.findByModelName("Rover"));
-		System.out.println(carDao.findByPowerBetween(127, 300));
+//		carDao.save(new Car(
+//			new CarModel("BMW"),
+//			carEngineDao.findByModel("xxx").get(0)
+//			));
 		
+		System.out.println(carDao.findByModelName("Rover"));
+		System.out.println(carDao.findByPowerBetween(100, 300));
+		System.out.println(carDao.findAll());		
 		System.out.println(carDao.findByEngineDisplacementIsLessThanAndEngineDisplacementIsLessThan(
 				10, 3000, 
 				new PageRequest(0,5,new Sort(Direction.ASC,"timestamp"))));
