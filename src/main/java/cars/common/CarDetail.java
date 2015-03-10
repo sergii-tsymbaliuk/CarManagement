@@ -20,6 +20,14 @@ public class CarDetail {
 	@ManyToMany(mappedBy="carDertails")
 	Collection<Car> cars = new ArrayList<Car>();
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public CarDetail(String name, String producer) {
 		super();
 		this.name = name;

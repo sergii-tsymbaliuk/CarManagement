@@ -38,10 +38,10 @@ public class Car {
 	@Version
 	protected long version;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST})
 	protected CarModel carModel;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST})
 	@JoinColumn(name="ENGINE_ID")
 	Engine121 engine;
 	
@@ -60,7 +60,7 @@ public class Car {
 	@ElementCollection(fetch=FetchType.EAGER)
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.EAGER)
 	protected Collection <CarDetail> carDertails = new ArrayList<CarDetail>();
 	
 	public CarType getCarType() {

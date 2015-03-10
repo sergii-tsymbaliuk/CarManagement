@@ -63,5 +63,9 @@ public class CarModel {
 //				+ ", cars=" + cars 
 				+ "]";
 	}
+
+	public Long getId() {
+		return id;
+	}
 	
 }

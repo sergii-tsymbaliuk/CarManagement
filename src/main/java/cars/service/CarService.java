@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import cars.common.Car;
 import cars.dao.CarDao;
+import cars.dao.CarEngineDao;
+import cars.dao.CarModelDao;
 
 @Service
 public class CarService {
@@ -104,6 +106,7 @@ public class CarService {
 	public <S extends Car> S saveAndFlush(S arg0) {
 		return carDao.saveAndFlush(arg0);
 	}
+
 
 	
 	

@@ -70,4 +70,8 @@ public class Engine121 {
 				+ numberOfCylinders + "]";
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 }
