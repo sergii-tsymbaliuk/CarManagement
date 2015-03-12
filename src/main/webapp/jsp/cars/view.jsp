@@ -17,6 +17,7 @@
 		<tr> <td><b>Power</b></td>   <td> </td>    <td>${car.engine.power}</td></tr>
 		<tr> <td><b>Displacement</b></td>   <td> </td>     <td>${car.engine.displacement}</td></tr>
 		<tr> <td><b>NumberOfCylinders</b></td>   <td> </td>     <td>${car.engine.numberOfCylinders}</td></tr>
+		<tr> <td><b>Description</b></td>   <td> </td>     <td>${car.description}</td></tr>		
 	</table>
 	<br>
 	<h3> Tech Records:</h3>
