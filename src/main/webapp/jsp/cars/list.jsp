@@ -23,16 +23,16 @@
 	</tr>
 	<c:forEach var="c" items="${cars}">
 		<tr>
-			<td>${c.id}</td>
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.id}</a></td>
 			<!-- Type -->
 <%-- 			<td>${c.carType}</td>		 --%>
 			<!-- Model -->
-			<td>${c.carModel.name}(${c.carModel.originDate})</td>	
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.carModel.name}(${c.carModel.originDate})</a></td>	
 			<!-- Engine		 -->
-			<td>${c.engine.model}</td>
-			<td>${c.engine.power}</td>
-			<td>${c.engine.displacement}</td>
-			<td>${c.engine.numberOfCylinders}</td>
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.engine.model}</a></td>
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.engine.power}</a></td>
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.engine.displacement}</a></td>
+			<td><a href='<c:url value="/cars/view?id=${c.id}"/>'>${c.engine.numberOfCylinders}</a></td>
 			<!-- Color -->
 <%-- 			<td>${c.color.name}(${c.color.value})</td> --%>
 		</tr>
