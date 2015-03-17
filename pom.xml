@@ -25,6 +25,10 @@
 			<url>http://localhost:8080/manager/text</url>
 			<server>myserver</server>
 			<!-- <username>tomcat</username> <password>tomcat</password> -->
+			<argLine>
+				-javaagent:"${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar"
+			</argLine>
+			<useSystemClassloader>true</useSystemClassloader>			
 		</configuration>
 	</plugin>      
   </plugins>

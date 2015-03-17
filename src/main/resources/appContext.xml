@@ -14,14 +14,18 @@
 	<context:component-scan base-package="cars">
 <!-- 		<context:exclude-filter type="regex" expression="cars.*Test*.*" /> -->
 	</context:component-scan>
+<!-- 	<context:load-time-weaver  -->
+<!-- 	 weaver-class="org.eclipse.equinox.weaving.springweaver.EquinoxAspectsLoadTimeWeaver"/> -->
+		
 	<jpa:repositories base-package="cars"></jpa:repositories>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="EclipseLinkMySQL"></property>	
-		<property name="loadTimeWeaver">
-			<bean class="org.eclipse.equinox.weaving.springweaver.EquinoxAspectsLoadTimeWeaver"/>
-		</property>
+		<property name="persistenceUnitName" value="HibernateMySQL"></property>	
+<!-- 		<property name="loadTimeWeaver"> -->
+<!-- 			<bean class="org.eclipse.equinox.weaving.springweaver.EquinoxAspectsLoadTimeWeaver"/> -->
+<!-- 			<bean class="org.springframework.instrument.classloading.SimpleLoadTimeWeaver " />  -->
+<!-- 		</property> -->
 	</bean>
 
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
