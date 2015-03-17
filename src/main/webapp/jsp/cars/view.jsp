@@ -18,6 +18,8 @@
 		<tr> <td><b><s:message code="power"/></b></td>   <td> </td>    <td>${car.engine.power}</td></tr>
 		<tr> <td><b><s:message code="displacement"/></b></td>   <td> </td>     <td>${car.engine.displacement}</td></tr>
 		<tr> <td><b><s:message code="numberofcylinders"/></b></td>   <td> </td>     <td>${car.engine.numberOfCylinders}</td></tr>
+		<tr> <td><b><s:message code="description"/></b></td>   <td> </td>     <td>${car.description}</td></tr>
+		
 
 	</table>
 	<br>
@@ -45,7 +47,7 @@
 		<tr><td><s:message code="id"/></td>	
 		<td><s:message code="name"/></td>	
 		<td><s:message code="producer"/></td></tr>
-		<c:forEach var="dt" items="${car.carDertails}">
+		<c:forEach var="dt" items="${car.carDetails}">
 			<tr>
 				<td>${dt.id}</td>
 				<td>${dt.name}</td>

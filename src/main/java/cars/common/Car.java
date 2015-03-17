@@ -2,14 +2,16 @@ package cars.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.ElementCollection;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -57,11 +59,11 @@ public class Car {
 	@Lob
 	protected String description;
 
-	@ElementCollection(fetch=FetchType.EAGER)
-	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
+	@OneToMany(fetch=FetchType.EAGER)
+	protected List<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	protected Collection <CarDetail> carDertails = new ArrayList<CarDetail>();
+	protected List<CarDetail> carDetails = new ArrayList<CarDetail>();
 	
 	public CarType getCarType() {
 		return carType;
@@ -133,7 +135,7 @@ public class Car {
 		return techRecords;
 	}
 	
-	public void setTechRecords(Collection<TechRecord> techRecords) {
+	public void setTechRecords(List<TechRecord> techRecords) {
 		this.techRecords = techRecords;
 	}
 	
@@ -149,16 +151,16 @@ public class Car {
 		this.carModel = carModel;
 	}
 	
-	public Collection<CarDetail> getCarDertails() {
-		return carDertails;
+	public Collection<CarDetail> getcarDetails() {
+		return carDetails;
 	}
 	
-	public void setCarDertails(Collection<CarDetail> carDertails) {
-		this.carDertails = carDertails;
+	public void setcarDetails(List<CarDetail> carDetails) {
+		this.carDetails = carDetails;
 	}	
 	
-	public void addCarDertail(CarDetail carDertail) {
-		this.carDertails.add(carDertail);
+	public void addcarDetail(CarDetail carDetail) {
+		this.carDetails.add(carDetail);
 	}	
 	
 	
@@ -174,6 +176,10 @@ public class Car {
 		s += "\n techRecords:\n";
 		for(TechRecord tr : techRecords)
 			s+= "\t"+tr +"\n";
+
+		s += "\n carDetails:\n";
+		for(CarDetail cd : carDetails)
+			s+= "\t"+cd +"\n";
 		return s;
 	}
 }

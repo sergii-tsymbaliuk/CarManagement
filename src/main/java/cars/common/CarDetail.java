@@ -17,7 +17,7 @@ public class CarDetail {
 	protected String name;
 	protected String producer;
 	
-	@ManyToMany(mappedBy="carDertails")
+	@ManyToMany(mappedBy="carDetails")
 	Collection<Car> cars = new ArrayList<Car>();
 
 	public Long getId() {

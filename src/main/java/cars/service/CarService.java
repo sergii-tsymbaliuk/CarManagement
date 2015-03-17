@@ -7,12 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import cars.common.Car;
 import cars.dao.CarDao;
-import cars.dao.CarEngineDao;
-import cars.dao.CarModelDao;
+
 
 @Service
 public class CarService {
@@ -35,6 +35,7 @@ public class CarService {
 						lower, higher, pageable);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public <S extends Car> S save(S entity) {
 		return carDao.save(entity);
 	}
@@ -44,7 +45,9 @@ public class CarService {
 	}
 
 	public Car findOne(Integer id) {
-		return carDao.findOne(id);
+		Car car = carDao.findOne(id);
+		System.out.println("CarService->findOne("+id+") :"+car.toString());
+		return car;
 	}
 
 	public boolean exists(Integer id) {
@@ -55,26 +58,33 @@ public class CarService {
 		return carDao.count();
 	}
 
+	@Secured("ROLE_ADMIN")
 	public void delete(Integer id) {
 		carDao.delete(id);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public void delete(Car entity) {
 		carDao.delete(entity);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public void delete(Iterable<? extends Car> entities) {
 		carDao.delete(entities);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public void deleteAll() {
 		carDao.deleteAll();
 	}
 
+
+	@Secured("ROLE_ADMIN")
 	public void deleteAllInBatch() {
 		carDao.deleteAllInBatch();
 	}
 
+	@Secured("ROLE_ADMIN")
 	public void deleteInBatch(Iterable<Car> arg0) {
 		carDao.deleteInBatch(arg0);
 	}
@@ -99,10 +109,12 @@ public class CarService {
 		return carDao.getOne(arg0);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public <S extends Car> List<S> save(Iterable<S> arg0) {
 		return carDao.save(arg0);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public <S extends Car> S saveAndFlush(S arg0) {
 		return carDao.saveAndFlush(arg0);
 	}

@@ -2,7 +2,7 @@ package cars.common;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 
 @Entity //(name="Engine")
 public class Engine121 {

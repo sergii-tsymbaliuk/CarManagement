@@ -4,6 +4,7 @@ import java.beans.PropertyEditorSupport;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -85,6 +86,7 @@ public class CarController {
 		return "cars/view";
 	}	
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String showAddCarForm(Model model){
 		System.out.println("viewAddCarForm");
@@ -94,6 +96,8 @@ public class CarController {
 		return "cars/edit";
 	}	
 	
+	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value={"/edit"}, method=RequestMethod.GET)
 	public String showEditCarForm(@RequestParam("id") Car car, Model model){
 		System.out.println("showEditCarForm for car "+car);
@@ -102,7 +106,8 @@ public class CarController {
 		model.addAttribute("carEngines", carEngineService.findAll());				
 		return "cars/edit";
 	}
-	
+
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value={"/edit","/add"} ,method=RequestMethod.POST)
 	public String editCar(
 				@ModelAttribute("car") Car car

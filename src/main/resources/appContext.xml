@@ -18,7 +18,10 @@
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="HibernateMySQL"></property>	
+		<property name="persistenceUnitName" value="EclipseLinkMySQL"></property>	
+		<property name="loadTimeWeaver">
+			<bean class="org.eclipse.equinox.weaving.springweaver.EquinoxAspectsLoadTimeWeaver"/>
+		</property>
 	</bean>
 
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>

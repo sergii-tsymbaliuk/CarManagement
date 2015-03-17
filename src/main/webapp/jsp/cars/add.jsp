@@ -52,7 +52,7 @@
 <!-- 	<h3> Detales:</h3>	 -->
 <!-- 	<table title="Detales"> -->
 <!-- 		<tr><td>id</td>	<td>name</td>	<td>producer</td></tr> -->
-<%-- 		<c:forEach var="dt" items="${car.carDertails}"> --%>
+<%-- 		<c:forEach var="dt" items="${car.carDetails}"> --%>
 <!-- 			<tr> -->
 <%-- 				<td>${dt.id}</td> --%>
 <%-- 				<td>${dt.name}</td> --%>

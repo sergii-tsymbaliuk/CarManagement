@@ -1,10 +1,19 @@
 package cars.common;
 import java.util.Date;
 
-import javax.persistence.Embeddable;
 
-@Embeddable
+
+//import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+//@Embeddable
+@Entity
 public class TechRecord {
+	@Id
+	@GeneratedValue
+	Long id;
 	protected Date date;
 	protected String author;
 	protected String text;
