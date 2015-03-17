@@ -26,6 +26,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -60,9 +62,11 @@ public class Car {
 	protected String description;
 
 	@OneToMany(fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	protected List<TechRecord> techRecords = new ArrayList<TechRecord>();
 	
 	@ManyToMany(fetch=FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)	
 	protected List<CarDetail> carDetails = new ArrayList<CarDetail>();
 	
 	public CarType getCarType() {
