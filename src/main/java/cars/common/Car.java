@@ -38,10 +38,10 @@ public class Car {
 	@Version
 	protected long version;
 	
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST})
+	@ManyToOne(/*cascade={CascadeType.MERGE,CascadeType.PERSIST}*/)
 	protected CarModel carModel;
 	
-	@OneToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST})
+	@OneToOne(/*cascade={CascadeType.MERGE,CascadeType.PERSIST}*/)
 	@JoinColumn(name="ENGINE_ID")
 	Engine121 engine;
 	
@@ -55,7 +55,7 @@ public class Car {
 	protected Date timestamp;
 
 	@Lob
-	protected String Description;
+	protected String description;
 
 	@ElementCollection(fetch=FetchType.EAGER)
 	protected Collection<TechRecord> techRecords = new ArrayList<TechRecord>();
@@ -111,10 +111,10 @@ public class Car {
 	}
 	
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	
 	public Car() {
@@ -170,7 +170,7 @@ public class Car {
 //				+ "\n power=" + power  
 				+ "\n engine=" + engine  
 				+ "\n carType=" + carType + "\n color=" + color
-				+ "\n Description=" + Description;
+				+ "\n Description=" + description;
 		s += "\n techRecords:\n";
 		for(TechRecord tr : techRecords)
 			s+= "\t"+tr +"\n";

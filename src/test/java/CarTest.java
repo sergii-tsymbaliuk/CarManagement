@@ -42,12 +42,14 @@ AbstractTransactionalJUnit4SpringContextTests {
 //			carEngineDao.findByModel("xxx").get(0)
 //			));
 		
-		System.out.println(carDao.findByModelName("Rover"));
-		System.out.println(carDao.findByPowerBetween(100, 300));
-		System.out.println(carDao.findAll());		
-		System.out.println(carDao.findByEngineDisplacementIsLessThanAndEngineDisplacementIsLessThan(
-				10, 3000, 
-				new PageRequest(0,5,new Sort(Direction.ASC,"timestamp"))));
+//		System.out.println(carDao.findByModelName("Rover"));
+//		System.out.println(carDao.findByPowerBetween(100, 300));
+		System.out.println(carDao.findAll());	
+		System.out.println(carEngineDao.findAll());	
+		System.out.println(carModelDao.findAll());	
+//		System.out.println(carDao.findByEngineDisplacementIsLessThanAndEngineDisplacementIsLessThan(
+//				10, 3000, 
+//				new PageRequest(0,5,new Sort(Direction.ASC,"timestamp"))));
 	}
 
 }

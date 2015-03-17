@@ -19,7 +19,7 @@ public class CarModel {
 	@Column(name="MODEL_NAME")
 	protected String name;
 	protected Date originDate;
-	@OneToMany(mappedBy="carModel", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="carModel", cascade=CascadeType.REMOVE)
 	protected Collection<Car> cars = new ArrayList<Car>();
 		
 	public CarModel() {
@@ -59,9 +59,8 @@ public class CarModel {
 
 	@Override
 	public String toString() {
-		return "CarModel [name=" + name + ", originDate=" + originDate
-//				+ ", cars=" + cars 
-				+ "]";
+		return "CarModel [id=" + id + ", name=" + name + ", originDate="
+				+ originDate + "]";
 	}
 
 	public Long getId() {

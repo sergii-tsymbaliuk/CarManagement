@@ -18,6 +18,7 @@
 		<tr> <td><b><s:message code="power"/></b></td>   <td> </td>    <td>${car.engine.power}</td></tr>
 		<tr> <td><b><s:message code="displacement"/></b></td>   <td> </td>     <td>${car.engine.displacement}</td></tr>
 		<tr> <td><b><s:message code="numberofcylinders"/></b></td>   <td> </td>     <td>${car.engine.numberOfCylinders}</td></tr>
+
 	</table>
 	<br>
 	<s:message var="tr_title" code="techrecords"/>
