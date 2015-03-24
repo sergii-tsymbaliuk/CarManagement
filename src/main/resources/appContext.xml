@@ -4,10 +4,12 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	
 	<import resource="securityContext.xml"/>
 	<context:annotation-config />
@@ -17,6 +19,11 @@
 <!-- 	<context:load-time-weaver  -->
 <!-- 	 weaver-class="org.eclipse.equinox.weaving.springweaver.EquinoxAspectsLoadTimeWeaver"/> -->
 		
+	<!-- enable AOP  -->	
+	<aop:aspectj-autoproxy/>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
 	<jpa:repositories base-package="cars"></jpa:repositories>
 
 	<bean id="entityManagerFactory"
