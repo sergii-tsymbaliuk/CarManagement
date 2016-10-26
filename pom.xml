@@ -4,18 +4,34 @@
   <artifactId>CarManagement</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>CarManagement</name>
+  <packaging>war</packaging>
   <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
+  <finalName>CarManagement</finalName>
+   <sourceDirectory>src</sourceDirectory>
+   <plugins>
+     <plugin>
+       <artifactId>maven-compiler-plugin</artifactId>
+       <version>3.1</version>
+       <configuration>
+         <source>1.8</source>
+         <target>1.8</target>
+       </configuration>
+     </plugin>
+	<plugin>
+		<groupId>org.apache.tomcat.maven</groupId>
+		<artifactId>tomcat7-maven-plugin</artifactId>
+		<version>2.2</version>
+		<configuration>
+			<url>http://localhost:8080/manager/text</url>
+			<server>myserver</server>
+			<!-- <username>tomcat</username> <password>tomcat</password> -->
+			<argLine>
+				-javaagent:"${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar"
+			</argLine>
+			<useSystemClassloader>true</useSystemClassloader>			
+		</configuration>
+	</plugin>      
+  </plugins>
   </build>
 	<dependencies>
 		<dependency>
@@ -43,5 +59,87 @@
 			<artifactId>postgresql</artifactId>
 			<version>LATEST</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.7.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>LATEST</version>
+		</dependency>
+			
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>LATEST</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
+		
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>LATEST</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>LATEST</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		
 	</dependencies>  
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>3.2.8.RELEASE</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
